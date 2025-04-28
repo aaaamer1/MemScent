@@ -1,0 +1,30 @@
+name: CI & Docker Build
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    # Build & push UI
+    - name: Build UI image
+      run: |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/memscent-ui:${{ github.sha }} ./dashboard
+
+    # Build & push API
+    - name: Build API image
+      run: |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/memscent-api:${{ github.sha }} ./cloud
+
+    - name: Log in to Docker Hub
+      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+    - name: Push images
+      run: |
+        docker push ${{ secrets.DOCKER_USERNAME }}/memscent-ui:${{ github.sha }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/memscent-api:${{ github.sha }}

@@ -1,0 +1,58 @@
+/* globals.css */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #111;       /* deep charcoal */
+    color: #eee;            /* light text */
+    font-family: system-ui, sans-serif;
+  }
+  
+  #\_\_next {
+    height: 100%;
+  }
+  
+  /* Centered container */
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+  
+  /* Frosted-glass panel */
+  .panel {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    padding: 2rem;
+    margin: auto;             /* center */
+    max-width: 600px;
+    width: 90%;
+  }
+  
+  /* Buttons */
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .generate-btn {
+    background: #10B981;
+    color: white;
+  }
+  
+  .feedback-btn {
+    background: #3B82F6;
+    color: white;
+    margin-right: 1rem;
+  }
+  
+  .feedback-btn:last-child {
+    margin-right: 0;
+  }
+  
