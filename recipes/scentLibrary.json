@@ -1,10 +1,92 @@
 [
-  { "name": "Sweet Orange"    },
-  { "name": "Bergamot"        },
-  { "name": "Lemon"           },
-  { "name": "Lavender"        },
-  { "name": "Ylang Ylang"     },
-  { "name": "Rosemary"        },
-  { "name": "Cedarwood"       },
-  { "name": "Frankincense"    }
+  {
+    "id": 0,
+    "name": "Citrus Harmony",
+    "components": [
+      { "oil": "Sweet Orange", "percent": 40 },
+      { "oil": "Bergamot",     "percent": 35 },
+      { "oil": "Lemon",        "percent": 25 }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Floral Dream",
+    "components": [
+      { "oil": "Lavender",    "percent": 50 },
+      { "oil": "Ylang Ylang", "percent": 30 },
+      { "oil": "Bergamot",    "percent": 20 }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Herbal Serenity",
+    "components": [
+      { "oil": "Lavender",     "percent": 45 },
+      { "oil": "Rosemary",     "percent": 30 },
+      { "oil": "Frankincense", "percent": 25 }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Woody Warmth",
+    "components": [
+      { "oil": "Cedarwood",    "percent": 40 },
+      { "oil": "Frankincense", "percent": 35 },
+      { "oil": "Ylang Ylang",  "percent": 25 }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Sunny Floral",
+    "components": [
+      { "oil": "Lemon",        "percent": 45 },
+      { "oil": "Lavender",     "percent": 35 },
+      { "oil": "Sweet Orange", "percent": 20 }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Spiced Wood",
+    "components": [
+      { "oil": "Cedarwood",    "percent": 50 },
+      { "oil": "Rosemary",     "percent": 30 },
+      { "oil": "Frankincense", "percent": 20 }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Tropical Bloom",
+    "components": [
+      { "oil": "Ylang Ylang",  "percent": 40 },
+      { "oil": "Sweet Orange", "percent": 35 },
+      { "oil": "Lavender",     "percent": 25 }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Calm Woods",
+    "components": [
+      { "oil": "Cedarwood", "percent": 45 },
+      { "oil": "Lavender",  "percent": 35 },
+      { "oil": "Bergamot",  "percent": 20 }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Morning Uplift",
+    "components": [
+      { "oil": "Lemon",     "percent": 40 },
+      { "oil": "Bergamot",  "percent": 35 },
+      { "oil": "Rosemary",  "percent": 25 }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Resinous Bliss",
+    "components": [
+      { "oil": "Frankincense", "percent": 50 },
+      { "oil": "Cedarwood",    "percent": 30 },
+      { "oil": "Lavender",     "percent": 20 }
+    ]
+  }
 ]

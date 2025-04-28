@@ -1,0 +1,134 @@
+[
+  {
+    "memory": "coffee shop",
+    "recipe": {
+      "name": "Coffee Shop",
+      "components": [
+        {
+          "oil": "Coffee",
+          "percent": 80
+        },
+        {
+          "oil": "Vanilla",
+          "percent": 15
+        },
+        {
+          "oil": "Cinnamon",
+          "percent": 5
+        }
+      ]
+    },
+    "rating": 1,
+    "timestamp": 1745817680714
+  },
+  {
+    "memory": "coffee shop",
+    "recipe": {
+      "name": "Coffee Shop",
+      "components": [
+        {
+          "oil": "Coffee",
+          "percent": 40
+        },
+        {
+          "oil": "Vanilla",
+          "percent": 30
+        },
+        {
+          "oil": "Bergamot",
+          "percent": 30
+        }
+      ]
+    },
+    "rating": 5,
+    "timestamp": 1745820910550
+  },
+  {
+    "memory": "coffee shop",
+    "recipe": {
+      "name": "Coffee Shop",
+      "components": [
+        {
+          "oil": "Coffee",
+          "percent": 40
+        },
+        {
+          "oil": "Vanilla",
+          "percent": 30
+        },
+        {
+          "oil": "Bergamot",
+          "percent": 30
+        }
+      ]
+    },
+    "rating": 1,
+    "timestamp": 1745821463780
+  },
+  {
+    "memory": "victoria's secret store",
+    "recipe": {
+      "name": "Victoria's Secret Store",
+      "components": [
+        {
+          "oil": "Rose",
+          "percent": 40
+        },
+        {
+          "oil": "Vanilla",
+          "percent": 30
+        },
+        {
+          "oil": "Bergamot",
+          "percent": 30
+        }
+      ]
+    },
+    "rating": 5,
+    "timestamp": 1745821526404
+  },
+  {
+    "memory": "spicy food",
+    "recipe": {
+      "name": "Spicy Fusion",
+      "components": [
+        {
+          "oil": "Cinnamon",
+          "percent": 40
+        },
+        {
+          "oil": "Sweet Orange",
+          "percent": 30
+        },
+        {
+          "oil": "Vanilla",
+          "percent": 30
+        }
+      ]
+    },
+    "rating": 1,
+    "timestamp": 1745821656346
+  },
+  {
+    "memory": "homemade lemonade",
+    "recipe": {
+      "name": "Homemade Lemonade",
+      "components": [
+        {
+          "oil": "Lemon",
+          "percent": 60
+        },
+        {
+          "oil": "Bergamot",
+          "percent": 30
+        },
+        {
+          "oil": "Sweet Orange",
+          "percent": 10
+        }
+      ]
+    },
+    "rating": 1,
+    "timestamp": 1745821683653
+  }
+]
