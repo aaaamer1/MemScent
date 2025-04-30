@@ -57,8 +57,12 @@ MemScent has two parts:
 
 # Tech & Skills
 
-Languages: Python, TypeScript, JavaScript
-Frameworks: FastAPI, Next.js, React
-AI/ML: OpenAI Embeddings, RandomForestRegressor
-Cloud/DevOps: Vercel (Serverless), Upstash Redis-KV, CI/CD, env-var secrets
-Future-proof: PlatformIO stubs ready for embedded diffuser hardware
+      Languages: Python, TypeScript, JavaScript
+
+      Frameworks: FastAPI, Next.js, React
+
+      AI/ML: OpenAI Embeddings, RandomForestRegressor
+
+      Cloud/DevOps: Vercel (Serverless), Upstash Redis-KV, CI/CD, env-var secrets
+
+      Future-proof: PlatformIO stubs ready for embedded diffuser hardware
