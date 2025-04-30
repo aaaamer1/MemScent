@@ -46,16 +46,16 @@ MemScent has two parts:
     python train_regressor.py
 
 4. **Run locally**
-    # In one terminal
+    ## In one terminal
     cd cloud && uvicorn server:app --reload --port 8001
-    # In another
+    ## In another
     cd dashboard && npm run dev
 
 5. **Deploy**
     Link repo in Vercel, set the same env vars in Project Settings → Environment Variables, then push to main.
 
 
-## Tech & Skills
+# Tech & Skills
 
 Languages: Python, TypeScript, JavaScript
 Frameworks: FastAPI, Next.js, React
