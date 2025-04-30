@@ -2,6 +2,29 @@
 
 **Turn your favorite memories into custom fragrance recipes.**
 
+We all carry vivid, smell-linked memories; grandma’s warm kitchen, the fresh tang of summer rain, the smoky warmth of a beach bonfire. 
+MemScent turns those mental snapshots into real-world fragrance recipes by:
+- Listening to Your Memory
+      You type in any memory—“Grandma’s cookies” or “first day of college”—and hit Generate Scent.
+- Thinking in Vector Space
+      Under the hood, we send your memory text to an AI “embedding” model that transforms words into numbers,                capturing their meaning.
+- Blending an Oil Trio
+      A Random Forest regressor, trained on past user feedback, maps that embedding to three essential oils (for             prototyping purposes - e.g. Coffee, Vanilla, Bergamot) and their exact percentages to recreate the emotion of          your memory.
+- Learning and Improving
+      You give a 👍/👎. Every day, the system retrains itself on the latest feedback so that it gets better at             matching blends to memories.
+- Serving It Fast
+      I cache memory→recipe lookups in Upstash Redis-KV so repeat requests are instantaneous and API calls are minimized.
+- Turning Data Into Aroma (Currently in progress)
+      An ESP32-powered diffuser can pull your custom recipe over Wi-Fi and drive peristaltic pumps or MOSFET-controlled valves to dispense the exact blend in your home, office, or retail space.
+
+
+- Real-World Use Cases
+      Personal Scent Journals: Build an aromatherapy diary tied to your happiest—and even your healing—moments.
+      Mood & Productivity: “Focus,” “Relax,” or “Energize” blends crafted from your own life story.
+      Retail & Brand Experience: On-demand custom scents for pop-up stores, showrooms, or events—no perfumer required.
+      Immersive Installations: Integrate with AR/VR, museum exhibits, escape rooms, or smart home systems to deepen          emotional engagement.
+      Industrial R&D: Prototype scent-driven feedback loops for robotics, human-machine interfaces, or automotive            cabin ambiance.
+
 ---
 
 ## Project Overview
@@ -21,6 +44,60 @@ MemScent has two parts:
 4. **Hosting & CI/CD**  
    - Deployed on **Vercel** with automatic Git-triggered builds  
    - Environment variables and secrets managed in Vercel dashboard
+**Embedded Diffuser (future)**  
+   - **ESP32** microcontroller running **PlatformIO** code  
+   - Controls peristaltic pumps or MOSFET-driven valves for each oil line  
+   - Wi-Fi endpoint to fetch recipe and dispense the blend automatically  
+
+
+   ### 5.1 Hardware Components & Setup  
+   | Component                             | Qty  | Purpose                                                       |
+   |---------------------------------------|------|---------------------------------------------------------------|
+   | **Raspberry Pi 5** (8 GB)             | 1    | Edge AI server, camera capture, weight-sensor control Rails    |
+   | **Raspberry Pi Camera V2**            | 1    | Visual feedback (bottle fill level, UI integration, security) |
+   | **HX711 + Load Cell**                 | 1–4  | Measure exactly how much oil was dispensed for closed-loop     |
+   | ESP32 DevKit (NodeMCU-32S)            | 1    | Wi-Fi MCU for real-time pump control                          |
+   | Peristaltic Pump (Kamoer NKP-DC-S10B) | 3–4  | One pump per essential-oil channel (12 V, 3 mm×5 mm)           |
+   | N-Channel MOSFET (RFP30N06LE)         | 3–4  | Logic-level gate driver for each pump                         |
+   | Flyback Diode (1N4007)                | 3–4  | Protects MOSFET from pump back-EMF                            |
+   | Power Module (5–12 V regulator)       | 1    | Feeds +12 V to pumps & +5 V/3.3 V to electronics               |
+   | Breadboard (full-size, right rails)   | 1    | Wiring hub with dedicated +/– rails                            |
+   | 100 Ω resistor                        | 3–4  | Series resistor between PWM pin & MOSFET Gate                 |
+   | 10 kΩ resistor                        | 3–4  | Gate pull-down to ensure MOSFET turns fully off               |
+   | Jumper Wires (F-M & M-M)              | 20+  | Connectors between ESP32, Pi GPIO, breadboard, pumps          |
+   | 12 V DC Power Supply (5 A)            | 1    | Powers the pump network via the regulator                     |
+   | Essential Oil Vials & Tubing          | N/A  | Holds and routes each oil channel                             |
+
+   ### 5.2 Pi + Sensor Integration  
+   1. **Pi 5 Setup**  
+      - Run your **AI Server** (`/cloud`) locally on the Pi  
+      - Host the **Next.js dashboard** (`/dashboard`) or forward traffic via SSH/ngrok  
+   2. **Camera V2**  
+      - Mount over the diffuser fill-station  
+      - Capture bottle fill-level and user interactions; feed frames to a CV model (e.g. checking for “empty” status)  
+   3. **Load Cell + HX711**  
+      - Connect the HX711 board to the Pi’s **I²C pins** (SDA/SCL) or free GPIOs (clock/data)  
+      - Place each oil bottle on a load cell platform  
+      - Continuously read weight to confirm pump dispenses the exact mL—close the loop in firmware  
+
+   ### 5.3 Wiring & Data Flow  
+  [Raspberry Pi 5]
+     │
+  ┌──┴──┐         ┌─────────────┐      ┌─────────┐
+  │ GPIO │──I²C──>│   HX711     │      │ Camera  │
+  └──┬───┘         └─────────────┘      └─────────┘
+     │
+   MQTT/WebSocket 
+     │             ┌─────────────┐      ┌───────────┐
+     └───────────>  │  ESP32      │<───┐ │  Pumps    │
+                   │ (Wi-Fi API) │     └─│ (MOSFETs) │
+                   └─────────────┘       └───────────┘
+
+
+- **Pi** runs the AI & web dashboard, reads camera & weight sensors  
+- **ESP32** fetches recipe & drives oil pumps in real time  
+- **Bi-directional**: Pi can monitor dispense progress via HX711 and camera, then adjust pump durations  
+
 
 ---
 
@@ -56,13 +133,10 @@ MemScent has two parts:
 
 
 # Tech & Skills
-
-      Languages: Python, TypeScript, JavaScript
-
-      Frameworks: FastAPI, Next.js, React
-
-      AI/ML: OpenAI Embeddings, RandomForestRegressor
-
-      Cloud/DevOps: Vercel (Serverless), Upstash Redis-KV, CI/CD, env-var secrets
-
-      Future-proof: PlatformIO stubs ready for embedded diffuser hardware
+      Languages: Python, TypeScript, JavaScript, C++ (embedded stubs)
+      Front-end: Next.js, React, Tailwind CSS
+      Back-end: FastAPI, Uvicorn
+      Machine Learning: OpenAI text embeddings, scikit-learn MultiOutputRegressor (RandomForest)
+      Cloud & DevOps: Vercel (Serverless functions), Upstash Redis-KV, CI/CD pipelines, environment-safe secrets
+      Embedded Systems: ESP32 microcontroller, PlatformIO, MOSFET valve drivers, peristaltic pumps control
+      Data & Caching: JSON feedback storage, Redis KV for fast lookups
