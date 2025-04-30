@@ -17,7 +17,7 @@ const ALLOWED_OILS = [
 ];
 
 // Load pre-built embeddings from disk 
-const EMB_PATH = path.join(process.cwd(), "cloud/embeddings.json");
+const EMB_PATH = path.join(process.cwd(), "data/embeddings.json");
 const embeddings: Array<{ embedding: number[]; recipe: any }> = JSON.parse(
   fs.readFileSync(EMB_PATH, "utf-8")
 );
