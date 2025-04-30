@@ -27,6 +27,9 @@ MemScent turns those mental snapshots into real-world fragrance recipes by:
 
 ## Project Overview
 
+<img width="1282" alt="Screenshot 2025-04-30 at 1 50 17 PM" src="https://github.com/user-attachments/assets/1de5d73e-1f71-49b2-b3ed-5f840bae4248" />
+
+
 MemScent has two main components:
 
 1. **Cloud AI Server** (`/cloud`)  
