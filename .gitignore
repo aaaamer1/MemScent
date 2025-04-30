@@ -1,4 +1,9 @@
 .pio
-# Never commit any .env files
+
 *.env
 *.env.local
+
+# local AI caches
+cloud/embeddings.json
+cloud/memory_map.json
+
