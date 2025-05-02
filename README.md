@@ -6,10 +6,8 @@ We all carry vivid, smell-linked memories: Grandma’s warm kitchen, the fresh t
 MemScent turns those mental snapshots into real-world fragrance recipes by:
 
 - **Listening to Your Memory**  
-  You type in any memory—“Grandma’s cookies” or “first day of college”—and hit **Generate Scent**.
-
-- **Thinking in Vector Space**  
-  Under the hood, we send your memory text to an AI “embedding” model that transforms words into numbers, capturing their meaning.
+  You type in any memory, such as “Grandma’s cookies” or “first day of college” and hit **Generate Scent**.
+  Under the hood, your memory is sent to an AI “embedding” model that transforms words into numbers, capturing their meaning.
 
 - **Blending an Oil Trio**  
   A Random Forest regressor, trained on past user feedback, maps that embedding to three essential oils (for prototyping purposes—e.g. Coffee, Vanilla, Bergamot) and their exact percentages to recreate the emotion of your memory.
@@ -18,7 +16,7 @@ MemScent turns those mental snapshots into real-world fragrance recipes by:
   You give a 👍/👎. Every day, the system retrains itself on the latest feedback so that it gets better at matching blends to memories.
 
 - **Serving It Fast**  
-  I cache memory→recipe lookups in Upstash Redis-KV so repeat requests are instantaneous and API calls are minimized.
+  We cache memory→recipe lookups in Upstash Redis-KV so repeat requests are instantaneous and API calls are minimized.
 
 - **Turning Data Into Aroma (ongoing)**  
   An ESP32-powered diffuser can pull your custom recipe over Wi-Fi and drive peristaltic pumps or MOSFET-controlled valves to dispense the exact blend in your home, office, or retail space.
